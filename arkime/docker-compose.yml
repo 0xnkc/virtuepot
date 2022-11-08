@@ -1,0 +1,87 @@
+x-os_instance: &_os_instance
+    image: opensearchproject/opensearch:$OS_VERSION
+    ulimits:
+        nofile:
+            soft: 65535
+            hard: 65535
+        memlock:
+            soft: -1
+            hard: -1
+    networks:
+        - arkime-os
+
+
+services:
+    os01:
+        <<: *_os_instance
+        container_name: $OS_NODE1
+        environment:
+            - node.name=$OS_NODE1
+            - discovery.seed_hosts=$OS_NODE2,$OS_NODE3
+            # default
+            - cluster.name=os-arkime-cluster
+            - cluster.initial_master_nodes=$OS_NODE1,$OS_NODE2,$OS_NODE3
+            - bootstrap.memory_lock=true
+            - "OPENSEARCH_JAVA_OPTS=-Xms$OS_JAVA_MEM -Xmx$OS_JAVA_MEM"
+            - DISABLE_SECURITY_PLUGIN=true
+            - DISABLE_INSTALL_DEMO_CONFIG=true
+        volumes:
+            - $OS_DATA_DIR/$OS_NODE1:/usr/share/opensearch/data
+    os02:
+        <<: *_os_instance
+        container_name: $OS_NODE2
+        environment:
+            - node.name=$OS_NODE2
+            - discovery.seed_hosts=$OS_NODE1,$OS_NODE3
+            # default
+            - cluster.name=os-arkime-cluster
+            - cluster.initial_master_nodes=$OS_NODE1,$OS_NODE2,$OS_NODE3
+            - bootstrap.memory_lock=true
+            - "OPENSEARCH_JAVA_OPTS=-Xms$OS_JAVA_MEM -Xmx$OS_JAVA_MEM"
+            - DISABLE_SECURITY_PLUGIN=true
+            - DISABLE_INSTALL_DEMO_CONFIG=true
+        volumes:
+            - $OS_DATA_DIR/$OS_NODE2:/usr/share/opensearch/data
+    os03:
+        <<: *_os_instance
+        container_name: $OS_NODE3
+        environment:
+            - node.name=$OS_NODE3
+            - discovery.seed_hosts=$OS_NODE1,$OS_NODE2
+            # default
+            - cluster.name=os-arkime-cluster
+            - cluster.initial_master_nodes=$OS_NODE1,$OS_NODE2,$OS_NODE3
+            - bootstrap.memory_lock=true
+            - "OPENSEARCH_JAVA_OPTS=-Xms$OS_JAVA_MEM -Xmx$OS_JAVA_MEM"
+            - DISABLE_SECURITY_PLUGIN=true
+            - DISABLE_INSTALL_DEMO_CONFIG=true
+        volumes:
+            - $OS_DATA_DIR/$OS_NODE3:/usr/share/opensearch/data
+
+    arkime:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        depends_on:
+            - $OS_NODE1
+            - $OS_NODE2
+            - $OS_NODE3
+        environment:
+            - OS_HOST=$OS_NODE1
+            - OS_PORT=9200
+        ports:
+            - $ARKIME_PORT:8005
+        volumes:
+            - arkime_config:/data/config
+            - arkime_logs:/data/logs
+            - $PCAP_DIR:/data/pcap
+        networks:
+            - arkime-os
+
+volumes:
+    arkime_config:
+    arkime_logs:
+
+
+networks:
+    arkime-os:
