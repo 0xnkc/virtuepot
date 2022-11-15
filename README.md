@@ -4,7 +4,7 @@ A high interaction virtual ICS honeypot that simulates a PLC and provides physic
 
 <img src="./doc/images/VirtuePot.png" alt="ICS architecture" />
 
-The above mestioned diagram shows the draft copy of the architecture 
+The above mentioned diagram shows the draft copy of the architecture 
 
 
 ## Installation
