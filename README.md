@@ -1,4 +1,4 @@
-# VIRTUEPOT an ICS Honenypot
+# VIRTUEPOT an ICS Honeypot
 
 A high interaction virtual ICS honeypot that simulates a PLC and provides physical process simulation.
 
