@@ -38,7 +38,7 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/* && \
 
 # add scripts
 #ADD /scripts /data/
-RUN chmod 755 /data/*.sh
+#RUN chmod 755 /data/*.sh
 
 VOLUME ["/data/pcap", "/data/config", "/data/logs"]
 EXPOSE 8005
