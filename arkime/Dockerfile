@@ -1,6 +1,6 @@
 ARG UBUNTU_VERSION=22.04
 FROM ubuntu:$UBUNTU_VERSION
-MAINTAINER mammo0 - https://github.com/mammo0
+
 
 # Install dependencies that are needed, but not set in the arkime.deb file
 RUN apt-get -qq update && \

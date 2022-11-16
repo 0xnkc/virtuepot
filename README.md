@@ -113,7 +113,7 @@ You can use `docker-compose` if you want to setup OpenSearch together with Arkim
 2. Run `cd arkime` and `chmod -R 777 data` **OR** `chown -R 1000:1000 data`. This is needed for the OpenSearch containers to be able to write to that directory.
 
 #### Start
-Simply run
+Please copy or rename the file docker-compose.env to .env before run
 ``` bash
 docker-compose up -d
 ```
