@@ -1,10 +1,9 @@
 # VIRTUEPOT an ICS Honeypot
-
-A high interaction virtual ICS honeypot that simulates a PLC and provides physical process simulation.
+A high-interaction virtual ICS honeypot that simulates a PLC and provides physical process simulation.
 
 <img src="./doc/images/VirtuePot.png" alt="ICS architecture" />
 
-The above mentioned diagram shows the draft copy of the architecture 
+The above-mentioned diagram shows the draft copy of the architecture 
 
 
 ## Installation
@@ -52,7 +51,21 @@ echo \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null 
 
 ```
+4. Update the apt package index:
+```bash
+sudo apt-get update
+Receiving a GPG error when running apt-get update?
 
+#Your default umask may be incorrectly configured, preventing detection of the repository public key file. Try granting read permission for the Docker public key file before updating the package index:
+
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+sudo apt-get update
+```
+
+5. Install Docker Engine, containers, and Docker Compose.
+``` bash 
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-compose
+```
 If you got permission denied while trying to connect to the Docker daemon socket
 
 ``` bash
@@ -97,7 +110,7 @@ You can use `docker-compose` if you want to setup OpenSearch together with Arkim
     sysctl -w vm.max_map_count=262144
     ```
 
-2. Run `cd arkime` and `chmod -R 777 data` **OR** `chown -R 1000:1000 data`. This is needed for the OpenSearch containers to be able to write to that direcotry.
+2. Run `cd arkime` and `chmod -R 777 data` **OR** `chown -R 1000:1000 data`. This is needed for the OpenSearch containers to be able to write to that directory.
 
 #### Start
 Simply run
@@ -110,7 +123,7 @@ The Arkime viewer instance can be accessed via
 
 http://localhost:8005
 
-*Assuming you don't changed the default port in the `.env` file.*
+*Assuming you _don't _change_ the default_ port in the `.env` file.*
 
 
 ## Install [OpenPLC_V2](https://github.com/thiagoralves/OpenPLC_v2) on Docker 
@@ -126,7 +139,7 @@ docker run -d --rm --privileged -p 8080:8080 -p 502:502 --net mynet --ip 172.25.
 ```
 
 ## Install Mininet 
-Make sure that python3 is installed as default
+Make sure that python3 is installed as the default
 ``` bash 
 git clone git://github.com/mininet/mininet
 sudo make install
