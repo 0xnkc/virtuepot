@@ -43,5 +43,5 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/* && \
 VOLUME ["/data/pcap", "/data/config", "/data/logs"]
 EXPOSE 8005
 WORKDIR $ARKIMEDIR
-
-ENTRYPOINT ["/data/startarkime.sh"]
+RUN chmod 755 /scripts/*.sh
+ENTRYPOINT ["/scripts/startarkime.sh"]
