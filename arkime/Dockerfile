@@ -1,6 +1,6 @@
 ARG UBUNTU_VERSION=22.04
 FROM ubuntu:$UBUNTU_VERSION
-
+MAINTAINER mammo0 - https://github.com/mammo0
 
 # Install dependencies that are needed, but not set in the arkime.deb file
 RUN apt-get -qq update && \
@@ -37,11 +37,11 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/* && \
     rm /data/$ARKIME_DEB_PACKAGE
 
 # add scripts
-#ADD /scripts /data/
-#RUN chmod 755 /data/*.sh
+ADD /scripts /data/
+RUN chmod 755 /data/*.sh
 
 VOLUME ["/data/pcap", "/data/config", "/data/logs"]
 EXPOSE 8005
 WORKDIR $ARKIMEDIR
-RUN chmod 755 /scripts/*.sh
-ENTRYPOINT ["/scripts/startarkime.sh"]
+
+ENTRYPOINT ["/data/startarkime.sh"]
