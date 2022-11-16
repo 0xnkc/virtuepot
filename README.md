@@ -401,7 +401,19 @@ It will take several minutes for all of Malcolm’s components to start up. Logs
     …
     
 
-You can now open a web browser and navigate to one of the [Malcolm user interfaces](/docs/quickstart.html#UserInterfaceURLs).
+You can now open a web browser and navigate to one of the [Malcolm user interfaces]
+User interface
+--------------
+
+A few minutes after starting Malcolm (probably 5 to 10 minutes for Logstash to be completely up, depending on the system), the following services will be accessible:
+
+*   [Arkime](https://arkime.com/): [https://localhost:443](https://localhost:443)
+*   [OpenSearch Dashboards](https://opensearch.org/docs/latest/dashboards/index/): [https://localhost/dashboards/](https://localhost/dashboards/) or [https://localhost:5601](https://localhost:5601)
+*   [Capture File and Log Archive Upload (Web)](/docs/upload.html#Upload): [https://localhost/upload/](https://localhost/upload/)
+*   [Capture File and Log Archive Upload (SFTP)](/docs/upload.html#Upload): `sftp://<username>@127.0.0.1:8022/files`
+*   [Host and Subnet Name Mapping](/docs/host-and-subnet-mapping.html#HostAndSubnetNaming) Editor: [https://localhost/name-map-ui/](https://localhost/name-map-ui/)
+*   [NetBox](/docs/netbox.html#NetBox): [https://localhost/netbox/](https://localhost/netbox/)
+*   [Account Management](/docs/authsetup.html#AuthBasicAccountManagement): [https://localhost:488](https://localhost:488)
 
 ## Install [OpenPLC_V2](https://github.com/thiagoralves/OpenPLC_v2) on Docker 
 
