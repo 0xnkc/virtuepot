@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 RUN mkdir src
 
-COPY ./src/ ./src/
+COPY ./ics-docker/src/ ./src/
 
 
 RUN apt-get update
