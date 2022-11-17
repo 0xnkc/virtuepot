@@ -426,14 +426,3 @@ docker network create --subnet=172.25.0.0/16 mynet
 #docker pull nikhilkc96/openplc
 docker run -d --rm --privileged -p 8080:8080 -p 502:502 --net mynet --ip 172.25.0.5 openplc
 ```
-
-## Install Mininet 
-Make sure that python3 is installed as the default
-``` bash 
-git clone git://github.com/mininet/mininet
-sudo make install
-```
-## Install MiniCPS
-``` bash
-pip3 install git+https://github.com/scy-phy/minicps
-```
