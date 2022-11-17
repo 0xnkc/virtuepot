@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 RUN mkdir src
 
-COPY src ./src/
+COPY ./src/ ./src/
 
 
 RUN apt-get update
