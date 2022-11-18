@@ -2,8 +2,6 @@ FROM ubuntu:20.04
 
 
 
-COPY ics-docker/src/ /src/
-
 
 RUN apt-get update
 
@@ -22,7 +20,13 @@ RUN apt-get update \
 && apt-get install -y memcached \
 && apt-get install -y python3-memcache \ 
 && apt-get install -y ettercap-common \
-&& apt-get install -y nmap
+&& apt-get install -y unzip \
+&& apt-get install -y nmap \
+&& apt-get install -y curl
+
+RUN curl -OL https://raw.githubusercontent.com/nikhilkc96/virtuepot/main/bottlefactory/src.zip
+
+RUN unzip src.zip
 
 WORKDIR /src
 
