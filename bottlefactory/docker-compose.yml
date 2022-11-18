@@ -30,7 +30,7 @@ services:
       fnet:
         ipv4_address: 192.168.1.11
     ports:
-      - 502:5502
+      - 5502:502
       
   plc2:
     build: ics-docker/.
@@ -50,7 +50,7 @@ services:
       fnet:
         ipv4_address: 192.168.1.12
     ports:
-      - 502:5503
+      - 5503:502
 
   hmi1:
     build: ics-docker/.
