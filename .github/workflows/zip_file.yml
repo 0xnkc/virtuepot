@@ -2,7 +2,6 @@ name: Zip Files
 
 on:
   push:
-  pull_request:
 
 jobs:
   zip-files:
@@ -12,4 +11,6 @@ jobs:
       - uses: vimtor/action-zip@v1
         with:
           files: bottlefactory/src/
-          dest: bottlefactory/src/src.zip
+          dest: ${{ github.workspace }}/src/src.zip
+      - run: zip -qq -r src.zip bottlefactory/src/
+        
