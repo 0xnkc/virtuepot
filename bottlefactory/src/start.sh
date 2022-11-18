@@ -20,7 +20,9 @@ then
 fi
 
 if [ $1 = "PLC1.py" ] || [ $1 = "PLC2.py" ] || [ $1 = "HMI1.py" ] || [ $1 = "HMI2.py" ] || [ $1 = "HMI3.py" ] || [ $1 = "FactorySimulation.py" ] 
+then 
 	python3 $1
 else
 	echo "the is no command with name: $1"
 fi
+done
