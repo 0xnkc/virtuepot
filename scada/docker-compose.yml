@@ -3,7 +3,6 @@ services:
   scada:
     build: scada-docker/.
     privileged: true
-    entrypoint: ["service apache2 restart"]
     container_name: scada
     networks:
       wnet:
