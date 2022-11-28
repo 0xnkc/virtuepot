@@ -5,7 +5,7 @@
 ``` bash
 cd OpenPLC
 docker build -t openplc .
-docker network create --subnet=172.25.0.0/16 mynet
+#docker network create --subnet=172.25.0.0/16 mynet
 #docker pull nikhilkc96/openplc
-docker run -d --rm --privileged -p 8080:8080 -p 502:502 --net mynet --ip 172.25.0.5 openplc
+docker run -d --rm --privileged -p 8080:8080 -p 502:502 --net icsnet --ip 192.168.0.40 openplc
 ```
