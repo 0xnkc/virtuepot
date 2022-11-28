@@ -13,24 +13,24 @@ services:
       - 8080:80
 
         
-networks:
-  wnet:
-    driver: bridge
-    name: icsnet
-    ipam:
-     config:
-       - subnet: 192.168.0.0/24
-         gateway: 192.168.0.1
-    driver_opts:
-      com.docker.network.bridge.name: br_icsnet
-  fnet:
-    driver: bridge
-    name: phynet
-    ipam:
-     config:
-       - subnet: 192.168.1.0/24
-         gateway: 192.168.1.1 
-    driver_opts:
-      com.docker.network.bridge.name: br_phynet
+# networks:
+#   wnet:
+#     driver: bridge
+#     name: icsnet
+#     ipam:
+#      config:
+#        - subnet: 192.168.0.0/24
+#          gateway: 192.168.0.1
+#     driver_opts:
+#       com.docker.network.bridge.name: br_icsnet
+#   fnet:
+#     driver: bridge
+#     name: phynet
+#     ipam:
+#      config:
+#        - subnet: 192.168.1.0/24
+#          gateway: 192.168.1.1 
+#     driver_opts:
+#       com.docker.network.bridge.name: br_phynet
 
 
