@@ -26,7 +26,9 @@ RUN chmod -R ugo+rwx /opt/scada/ScadaWeb/config \
 
 
 RUN chmod +x /opt/scada/make_executable.sh \
-    &&  /opt/scada/make_executable.sh
+    &&  /opt/scada/make_executable.sh \
+    && /opt/scada/svc_install.sh \
+    && /opt/scada/scadastart.sh
 
 
 RUN  apt install -y  gnupg ca-certificates \
