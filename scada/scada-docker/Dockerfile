@@ -49,3 +49,6 @@ RUN cp apache/scada.conf /etc/apache2/sites-available
 RUN a2ensite scada.conf
 
 RUN /opt/scada/svc_install.sh
+
+
+ENTRYPOINT ["/opt/scada/scadastart.sh"]
