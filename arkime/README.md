@@ -11,18 +11,6 @@ To run this image a **working OpenSearch** environment is required. Please stick
 
 
 ### Run the container
-This image can be run with
-
-```shell
-docker run \
-    -e OS_HOST=opensearch \
-    -e OS_PORT 9200 \
-    -v <config_volume>:/data/config \
-    -v <pcap_volume>:/data/pcap \
-    -v <log_volume>:/data/logs \
-    mammo0/docker-arkime:<tag>
-```
-
 These parameters are available:
 
 
@@ -48,16 +36,14 @@ These parameters are available:
 You can use `docker-compose` if you want to setup OpenSearch together with Arkime in one step.
 
 #### Configuration
-1. Please copy or rename the file `docker-compose.env` to `.env` **before** running `docker-compose up`. You may want to change some of the variables inside. Each variable is documented there.
 
-2. Please ensure you have done this step (otherwise OpenSearch won't start): https://opensearch.org/docs/latest/opensearch/install/docker/#important-host-settings
+1. Please ensure you have done this step (otherwise OpenSearch won't start): https://opensearch.org/docs/latest/opensearch/install/docker/#important-host-settings
 
     To apply the setting on a live system, run:
     ```shell
     sysctl -w vm.max_map_count=262144
     ```
 
-3. Run `chmod -R 777 os_data` **OR** `chown -R 1000:1000 os_data`. This is needed for the OpenSearch containers to be able to write to that direcotry.
 
 #### Start
 Simply run
