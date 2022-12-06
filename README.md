@@ -22,7 +22,7 @@ To install Docker Engine, you need the 64-bit version of one of these Ubuntu ver
 Docker Engine is compatible with x86_64 (or amd64), armhf, arm64, and s390x architectures.
 
 * [Install Docker](./doc/docker.md)
-* [Installation of Malcolm (Monitoring Node)](./doc/malcolm.md)
-* [Installation of OpenPLC (Running Chemical Plant)](./doc/openplc.md)
+* [Installation of Arkime (Monitoring Node)](./doc/arkime.md)
+* [Installation of OpenPLC (Running Water Tank)](./doc/openplc.md)
 * [Installation of ICSSIM (Running Bottle Factory)](./doc/icssim.md)
 * [Installation of Scada ](./doc/scada.md)

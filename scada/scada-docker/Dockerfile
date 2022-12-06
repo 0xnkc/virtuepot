@@ -52,7 +52,7 @@ RUN a2ensite scada.conf
 
 RUN systemctl reload apache2
 
-RUN /opt/scada/svc_install.sh
+RUN printf "n\n1\n" | bash /opt/scada/svc_install.sh
 
 
 ENTRYPOINT ["/opt/scada/scadastart.sh"]
