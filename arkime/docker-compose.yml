@@ -75,8 +75,7 @@ services:
             - arkime_config:/data/config
             - arkime_logs:/data/logs
             - arkime_pcap:/data/pcap
-        networks:
-            - arkime-os
+        network_mode: "host"
 
 volumes:
     arkime_config:
@@ -85,7 +84,3 @@ volumes:
     os2_data:
     os3_data:
     arkime_pcap:
-
-
-networks:
-    arkime-os:
