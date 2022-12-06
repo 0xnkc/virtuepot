@@ -24,9 +24,13 @@ RUN apt-get update \
 && apt-get install -y nmap \
 && apt-get install -y curl
 
-RUN curl -OL https://raw.githubusercontent.com/nikhilkc96/virtuepot/main/bottlefactory/src.zip
+# RUN curl -OL https://raw.githubusercontent.com/nikhilkc96/virtuepot/main/bottlefactory/src.zip
 
-RUN unzip src.zip
+# RUN unzip src.zip
+
+RUN mkdir src
+
+COPY ./src/ ./src/
 
 WORKDIR /src
 
