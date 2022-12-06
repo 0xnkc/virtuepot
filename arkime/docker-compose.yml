@@ -22,7 +22,7 @@ services:
             - cluster.name=os-arkime-cluster
             - cluster.initial_master_nodes=os01,os02,os03
             - bootstrap.memory_lock=true
-            - "OPENSEARCH_JAVA_OPTS=-Xms$OS_JAVA_MEM -Xmx$OS_JAVA_MEM"
+            - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
             - DISABLE_SECURITY_PLUGIN=true
             - DISABLE_INSTALL_DEMO_CONFIG=true
         volumes:
@@ -37,7 +37,7 @@ services:
             - cluster.name=os-arkime-cluster
             - cluster.initial_master_nodes=os01,os02,os03
             - bootstrap.memory_lock=true
-            - "OPENSEARCH_JAVA_OPTS=-Xms$OS_JAVA_MEM -Xmx$OS_JAVA_MEM"
+            - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
             - DISABLE_SECURITY_PLUGIN=true
             - DISABLE_INSTALL_DEMO_CONFIG=true
         volumes:
@@ -52,7 +52,7 @@ services:
             - cluster.name=os-arkime-cluster
             - cluster.initial_master_nodes=os01,os02,os03
             - bootstrap.memory_lock=true
-            - "OPENSEARCH_JAVA_OPTS=-Xms$OS_JAVA_MEM -Xmx$OS_JAVA_MEM"
+            - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
             - DISABLE_SECURITY_PLUGIN=true
             - DISABLE_INSTALL_DEMO_CONFIG=true
         volumes:
