@@ -26,10 +26,10 @@ RUN chmod -R ugo+rwx /opt/scada/ScadaWeb/config \
 
 
 RUN chmod +x /opt/scada/make_executable.sh \
-    &&  /opt/scada/make_executable.sh \
-    && /opt/scada/svc_install.sh \
-    && /opt/scada/scadastart.sh
+    &&  /opt/scada/make_executable.sh 
 
+RUN chmod +x /opt/scada/svc_install.sh \
+    && chmod +x  /opt/scada/scadastart.sh
 
 RUN  apt install -y  gnupg ca-certificates \
     && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
@@ -49,6 +49,8 @@ RUN cp apache/scada.conf /etc/apache2/sites-available
 
 
 RUN a2ensite scada.conf
+
+RUN systemctl reload apache2
 
 RUN /opt/scada/svc_install.sh
 
