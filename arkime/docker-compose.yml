@@ -77,7 +77,7 @@ services:
             - arkime_pcap:/data/pcap
         networks:
             - arkime-os
-            - host
+            - hostnetwork
 
 volumes:
     arkime_config:
@@ -89,3 +89,6 @@ volumes:
 
 networks:
     arkime-os:
+    hostnetwork:
+        external: true
+        name: host
