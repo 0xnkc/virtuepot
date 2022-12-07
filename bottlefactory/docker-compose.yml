@@ -4,7 +4,7 @@ services:
     build: ics-docker/.
     privileged: true
     #working_dir: /src
-    entrypoint: ["./start.sh", "FactorySimulation.py"]
+    entrypoint: bash start.sh FactorySimulation.py
     container_name: pys
     volumes:
       - ../src:/src
@@ -18,7 +18,7 @@ services:
     build: ics-docker/.
     privileged: true
     #working_dir: /src
-    entrypoint: ["./start.sh", "PLC1.py"]
+    entrypoint: bash start.sh PLC1.py
     container_name: plc1
     volumes:
       - ../src:/src
@@ -38,7 +38,7 @@ services:
     #tty: true
     privileged: true
     #working_dir: /src
-    entrypoint: ["./start.sh", "PLC2.py"]
+    entrypoint: bash start.sh PLC2.py
     container_name: plc2
     volumes:
       - ../src:/src
@@ -58,7 +58,7 @@ services:
     tty: true  
     #working_dir: /src
     privileged: true
-    entrypoint: ["./start.sh", "HMI1.py"]
+    entrypoint: bash start.sh HMI1.py
     container_name: hmi1
     volumes:
       - ../src:/src
@@ -74,7 +74,7 @@ services:
     tty: true 
     privileged: true
     #working_dir: /src
-    entrypoint: ["./start.sh", "HMI2.py"]
+    entrypoint: bash start.sh HMI2.py
     container_name: hmi2
     volumes:
       - ../src:/src
@@ -89,7 +89,7 @@ services:
     tty: true 
     privileged: true
     #working_dir: /src
-    entrypoint: ["./start.sh", "HMI3.py"]
+    entrypoint: bash start.sh HMI3.py
     container_name: hmi3
     volumes:
       - ../src:/src

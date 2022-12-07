@@ -30,6 +30,8 @@ WORKDIR /src
 
 RUN find . -type f -exec dos2unix {} \;
 
+RUN chmod 755 *.sh
+
 
 
 
