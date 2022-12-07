@@ -22,15 +22,17 @@ RUN apt-get update \
 && apt-get install -y curl \
 && apt-get install dos2unix
 
-RUN curl -OL https://raw.githubusercontent.com/nikhilkc96/virtuepot/main/bottlefactory/ics-docker/src.zip
+# RUN curl -OL https://raw.githubusercontent.com/nikhilkc96/virtuepot/main/bottlefactory/ics-docker/src.zip
 
-RUN unzip src.zip
+# RUN unzip src.zip
+
+COPY /src /src/
 
 WORKDIR /src
 
 RUN find . -type f -exec dos2unix {} \;
 
-RUN chmod 755 *.sh
+RUN chmod 755 *.*
 
 
 
