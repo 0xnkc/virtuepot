@@ -60,7 +60,7 @@ services:
 
     arkime:
         build:
-            context: arkime-docker/.
+            context: .
             dockerfile: Dockerfile
         depends_on:
             - os01
