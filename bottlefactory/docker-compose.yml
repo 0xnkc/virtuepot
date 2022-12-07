@@ -117,3 +117,5 @@ networks:
       com.docker.network.bridge.name: br_phynet
 
 
+volumes:
+    src:
