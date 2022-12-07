@@ -19,17 +19,18 @@ RUN apt-get update \
 && apt-get install -y ettercap-common \
 && apt-get install -y unzip \
 && apt-get install -y nmap \
-&& apt-get install -y curl
+&& apt-get install -y curl \
+&& apt-get install dos2unix
 
 RUN curl -OL https://raw.githubusercontent.com/nikhilkc96/virtuepot/main/bottlefactory/ics-docker/src.zip
 
 RUN unzip src.zip
 
-# RUN mkdir src
-
-# COPY /src /src
-
 WORKDIR /src
+
+RUN find . -type f -exec dos2unix {} \;
+
+
 
 
 
