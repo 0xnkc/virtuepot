@@ -50,7 +50,7 @@ services:
         ipv4_address: 192.168.1.12
       
   hmi1:
-    build: ics-docker/.
+    build: .
     stdin_open: true # docker run -i
     tty: true  
     working_dir: /src
@@ -66,7 +66,7 @@ services:
         ipv4_address: 192.168.0.21
         
   hmi2:
-    build: ics-docker/.
+    build: .
     stdin_open: true # docker run -i
     tty: true 
     privileged: true
