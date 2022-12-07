@@ -27,6 +27,8 @@ services:
             - DISABLE_INSTALL_DEMO_CONFIG=true
         volumes:
             - os1_data:/usr/share/opensearch/data
+        restart: on-failure
+
     os02:
         <<: *_os_instance
         container_name: os02
@@ -42,6 +44,8 @@ services:
             - DISABLE_INSTALL_DEMO_CONFIG=true
         volumes:
             - os2_data:/usr/share/opensearch/data
+        restart: on-failure
+
     os03:
         <<: *_os_instance
         container_name: os03
@@ -57,6 +61,7 @@ services:
             - DISABLE_INSTALL_DEMO_CONFIG=true
         volumes:
             - os3_data:/usr/share/opensearch/data
+        restart: on-failure
 
     arkime:
         build:
@@ -77,6 +82,7 @@ services:
             - arkime_pcap:/data/pcap
         networks:
             - arkime-os
+        restart: on-failure
 
 volumes:
     arkime_config:
