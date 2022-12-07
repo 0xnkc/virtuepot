@@ -30,7 +30,7 @@ RUN apt-get update \
 
 RUN mkdir src
 
-COPY ./src/ ./src/
+COPY /src /src
 
 WORKDIR /src
 
