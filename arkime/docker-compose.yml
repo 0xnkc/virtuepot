@@ -26,7 +26,7 @@ services:
             - DISABLE_SECURITY_PLUGIN=true
             - DISABLE_INSTALL_DEMO_CONFIG=true
         volumes:
-            - os1_data:/usr/share/opensearch/data
+            - ./os1_data:/usr/share/opensearch/data
     os02:
         <<: *_os_instance
         container_name: os02
@@ -41,7 +41,7 @@ services:
             - DISABLE_SECURITY_PLUGIN=true
             - DISABLE_INSTALL_DEMO_CONFIG=true
         volumes:
-            - os2_data:/usr/share/opensearch/data
+            - ./os2_data:/usr/share/opensearch/data
     os03:
         <<: *_os_instance
         container_name: os03
@@ -56,7 +56,7 @@ services:
             - DISABLE_SECURITY_PLUGIN=true
             - DISABLE_INSTALL_DEMO_CONFIG=true
         volumes:
-            - os3_data:/usr/share/opensearch/data
+            - ./os3_data:/usr/share/opensearch/data
 
     arkime:
         build:
@@ -72,12 +72,11 @@ services:
         ports:
             - 8005:8005
         volumes:
-            - arkime_config:/data/config
-            - arkime_logs:/data/logs
-            - arkime_pcap:/data/pcap
+            - ./arkime_config:/data/config
+            - ./arkime_logs:/data/logs
+            - ./arkime_pcap:/data/pcap
         networks:
             - arkime-os
-            - hostnetwork
 
 volumes:
     arkime_config:
@@ -89,6 +88,4 @@ volumes:
 
 networks:
     arkime-os:
-    hostnetwork:
-        external: true
-        name: host
+    
