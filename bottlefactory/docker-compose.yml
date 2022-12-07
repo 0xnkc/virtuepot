@@ -7,7 +7,7 @@ services:
     entrypoint: ["./start.sh", "FactorySimulation.py"]
     container_name: pys
     volumes:
-      - ./src:/src
+      - ../src:/src
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
     networks:
@@ -21,7 +21,7 @@ services:
     entrypoint: ["./start.sh", "PLC1.py"]
     container_name: plc1
     volumes:
-      - ./src:/src
+      - ../src:/src
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
     networks:
@@ -41,7 +41,7 @@ services:
     entrypoint: ["./start.sh", "PLC2.py"]
     container_name: plc2
     volumes:
-      - ./src:/src
+      - ../src:/src
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
     networks:
@@ -61,7 +61,7 @@ services:
     entrypoint: ["./start.sh", "HMI1.py"]
     container_name: hmi1
     volumes:
-      - ./src:/src
+      - ../src:/src
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
     networks:
@@ -77,7 +77,7 @@ services:
     entrypoint: ["./start.sh", "HMI2.py"]
     container_name: hmi2
     volumes:
-      - ./src:/src
+      - ../src:/src
     networks:
       wnet:
         ipv4_address: 192.168.0.22
@@ -92,7 +92,7 @@ services:
     entrypoint: ["./start.sh", "HMI3.py"]
     container_name: hmi3
     volumes:
-      - ./src:/src
+      - ../src:/src
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
     networks:
