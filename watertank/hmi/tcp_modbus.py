@@ -20,4 +20,4 @@ while True:
     # write to multiple registers using list of data
     wr = client.write_registers(20,list,unit=1)
     time.sleep(0.1)
-    print(data)
+    
