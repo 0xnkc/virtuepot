@@ -8,4 +8,4 @@ RUN pip3 install -r requirements.txt
 
 RUN chmod +x docker_entrypoint.sh
 
-CMD [ "./docker_entrypoint.sh"]
+CMD ["./docker_entrypoint.sh"]

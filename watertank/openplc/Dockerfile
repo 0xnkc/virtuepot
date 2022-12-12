@@ -1,4 +1,7 @@
-FROM debian:8
+FROM ubuntu:20.04
+RUN apt-get update
+RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
+
 
 # Install dependencies
 RUN apt-get update
@@ -14,4 +17,4 @@ RUN find . -type f -exec dos2unix {} \;
 RUN printf "n\n1\n" | bash /usr/local/src/OpenPLC/build.sh
 
 #Start the server
-CMD sudo nodejs server.js
+CMD ["sudo", "nodejs", "server.js"]
