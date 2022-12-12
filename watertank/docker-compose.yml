@@ -1,7 +1,9 @@
 version: "3.9"
 services:
   openplc:
-    build: openplc/ .
+    build: 
+     context: ./openplc
+     dockerfile: Dockerfile
     stdin_open: true # docker run -i
     tty: true 
     privileged: true
@@ -13,13 +15,15 @@ services:
       - 8080:8080
       - 502:502
     networks:
-    wnet:
+     wnet:
         ipv4_address: 192.168.0.24
 
   
 
   openplc_hmi:
-    build: hmi/ .
+    build: 
+      context: ./hmi
+      dockerfile: Dockerfile
     stdin_open: true # docker run -i
     tty: true 
     privileged: true
@@ -30,7 +34,7 @@ services:
     ports:
       - 7000:7000
     networks:
-    wnet:
+     wnet:
         ipv4_address: 192.168.0.25
         
 networks:
