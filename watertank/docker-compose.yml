@@ -10,8 +10,8 @@ services:
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
     ports:
-      - "8080:8080"
-      - "502:502"
+      - 8080:8080
+      - 502:502
     networks:
     wnet:
         ipv4_address: 192.168.0.24
@@ -28,7 +28,7 @@ services:
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
     ports:
-      - "7000:7000"
+      - 7000:7000
     networks:
     wnet:
         ipv4_address: 192.168.0.25
