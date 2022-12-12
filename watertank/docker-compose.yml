@@ -1,6 +1,5 @@
 version: "3.9"
 services:
-
   openplc:
     build: openplc/ .
     stdin_open: true # docker run -i
@@ -10,10 +9,10 @@ services:
     volumes:
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
-    networks:
     ports:
       - "8080:8080"
       - "502:502"
+    networks:
     wnet:
         ipv4_address: 192.168.0.24
 
@@ -28,9 +27,9 @@ services:
     volumes:
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
-    networks:
     ports:
       - "7000:7000"
+    networks:
     wnet:
         ipv4_address: 192.168.0.25
         
@@ -55,5 +54,3 @@ networks:
       com.docker.network.bridge.name: br_phynet
 
 
-volumes:
-    src:
