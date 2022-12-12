@@ -1,0 +1,10 @@
+click==7.1.2
+Flask==2
+itsdangerous==2.0
+Jinja2==3.0
+MarkupSafe==2.0.0
+Werkzeug==2.0
+pymodbus==2.5.3
+pyserial==3.5
+six==1.16.0
+

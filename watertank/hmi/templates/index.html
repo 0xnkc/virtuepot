@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SIMATIC HMI</title>
+    <meta name="description" content="description here">
+    <meta name="keywords" content="keywords,here">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <!--Replace with your tailwind.css once created-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <script src="../static/js/main.js"></script>
+    <script type="text/javascript"> 
+   
+    function display_c(){
+    var refresh=1000; // Refresh rate in milli seconds
+    mytime=setTimeout('display_ct()',refresh)
+    }
+
+    function display_ct() {
+    var x = new Date().toLocaleString();
+    document.getElementById('date-time').innerHTML = x;
+
+    $.ajax({
+    url: 'http://192.168.0.25:7000/api',
+    dataType: 'json',
+    success: function(data) {
+        // alert(data.data[0])
+        document.getElementById('inflow').innerHTML = data.data[0]+ " L/s";
+        document.getElementById('height').innerHTML = "2000"+ " MM";
+        document.getElementById('setpoint').innerHTML = "1000"+ " MM";
+        document.getElementById('level').innerHTML = 1050-data.data[4] + " MM";
+        myBarChart.data.datasets[0].data[0] = 2000-(1050+data.data[4]);
+        myBarChart.data.datasets[0].data[1] = 1050-data.data[4];
+        myBarChart.update();
+        document.getElementById('outflow').innerHTML = data.data[4]+ " L/s";
+        ajax_data = 1050-data.data[4] ;
+
+    },
+    error: function(jqXHR, textStatus, errorThrown){
+        console.log('Error: ' + textStatus + ' - ' + errorThrown);
+    }
+    });
+    display_c();
+    }
+
+    
+
+    </script>
+
+
+</head>
+
+<body class="bg-gray-100 font-sans leading-normal tracking-normal" onload=display_ct();>
+   
+    <nav id="header" class="bg-white fixed w-full z-10 top-0 shadow">
+
+
+        <div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0">
+
+            <div class="w-1/2 pl-2 md:pl-0">
+                <a class="text-gray-900 text-base xl:text-xl no-underline hover:no-underline font-bold" href="#">
+                    <img width="120cm" id="logo"src="../static/imgs/siemens_logo.png"/>  SIMATIC HMI
+                </a>
+            </div>
+            <div class="w-1/2 pr-0">
+                <div class="flex relative inline-block float-right">
+
+                    <div class="relative text-sm">
+                        <button id="userButton" class="flex items-center focus:outline-none mr-3">
+                            <img class="w-8 h-8 rounded-full mr-4" src="../static/imgs/user-avatar-with-check-mark.png" alt="Avatar of User"> <span class="hidden md:inline-block">Hi, Admin </span>
+                            <svg class="pl-2 h-2" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 129 129">
+                                <g>
+                                    <path d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z" />
+                                </g>
+                            </svg>
+                        </button>
+                        <div id="userMenu" class="bg-white rounded shadow-md mt-2 absolute mt-12 top-0 right-0 min-w-full overflow-auto z-30 invisible">
+                            <ul class="list-reset">
+                                <li><a href="#" class="px-4 py-2 block text-gray-900 hover:bg-gray-400 no-underline hover:no-underline">My account</a></li>
+                                <li><a href="#" class="px-4 py-2 block text-gray-900 hover:bg-gray-400 no-underline hover:no-underline">Notifications</a></li>
+                                <li>
+                                    <hr class="border-t mx-2 border-gray-400">
+                                </li>
+                                <li><a href="#" class="px-4 py-2 block text-gray-900 hover:bg-gray-400 no-underline hover:no-underline">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="block lg:hidden pr-4">
+                        <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-900 hover:border-teal-500 appearance-none focus:outline-none">
+                            <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <title>Menu</title>
+                                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+
+                </div>
+    </nav>
+
+    <!--Container-->
+    <div class="container w-full mx-auto pt-20">
+
+        <div class="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
+
+            <!--Console Content-->
+
+            <div class="flex flex-wrap">
+                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+                    <!--Metric Card-->
+                    <div class="bg-white border rounded shadow p-2">
+                        <div class="flex flex-row items-center">
+                            <div class="flex-shrink pr-4">
+                                <div class="rounded p-3 bg-green-600"><i class="fa fa-calendar fa-2x fa-fw fa-inverse"></i></div>
+                            </div>
+                            <div class="flex-1 text-right md:text-center">
+                                <h5 class="font-bold uppercase text-gray-500">DATE / TIME</h5>
+                                <h3 class="font-bold text-3xl"><span id='date-time'> <span class="text-green-500"><i class="fas fa-caret-up"></i></span></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/Metric Card-->
+                </div>
+                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+                    <!--Metric Card-->
+                    <div class="bg-white border rounded shadow p-2">
+                        <div class="flex flex-row items-center">
+                            <div class="flex-shrink pr-4">
+                                <div class="rounded p-3 bg-red-600"><i class="fas fa-user fa-2x fa-fw fa-inverse"></i></div>
+                            </div>
+                            <div class="flex-1 text-right md:text-center">
+                                <h5 class="font-bold uppercase text-gray-500">USER</h5>
+                                <h3 class="font-bold text-3xl">Administrator<span class="text-black-500"></span></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/Metric Card-->
+                </div>
+                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+                    <!--Metric Card-->
+                    <div class="bg-white border rounded shadow p-2">
+                        <div class="flex flex-row items-center">
+                            <div class="flex-shrink pr-4">
+                                <div class="rounded p-3 bg-green-600"><i class="fas fa-play-circle fa-2x fa-fw fa-inverse"></i></div>
+                            </div>
+                            <div class="flex-1 text-right md:text-center">
+                                <h5 class="font-bold uppercase text-gray-500">STATE</h5>
+                                <h3 class="font-bold text-3xl">Running <span class="text-green-600"><i class="fas fa-caret-up"></i></span></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/Metric Card-->
+                </div>
+                
+                
+            </div>
+
+            <!--Divider-->
+            <hr class="border-b-2 border-gray-400 my-8 mx-4">
+
+            <div class="flex flex-row flex-wrap flex-grow mt-6">
+
+                <div class="w-full md:w-1/2 p-3">
+                    <div style="position: relative; text-align: center; color: black;" >
+                    <img src="../static/imgs/tank.jpeg" alt="Snow" style="width:60%;">
+                     <p style="position: absolute; top: 278px; left:  30px;">Inflow: <span id="inflow"></span></p>
+                    <p style="position: absolute; top: 238px; left:  332px;">Outflow <span id="outflow"></span></p>
+                    <p style="position: absolute; top: 71px; left:  92px;">Height: <span id="height"></span></p>
+                    <p style="position: absolute; top: 185px; left:  18px;">Setpoint <span id="setpoint"></span></p>
+                    <p style="position: absolute; top: 170px; left:  18px;">Level <span id="level"></span></p>
+                      </div>              
+                </div>
+
+                <div class="w-full md:w-1/2 p-3">
+                    <!--Graph Card-->
+                    <div class="bg-white border rounded shadow">
+                        <div class="border-b p-3">
+                            <h5 class="font-bold uppercase text-gray-600">Graph</h5>
+                        </div>
+                        <div class="p-5">
+                            <canvas id="chartjs-0" class="chartjs" width="undefined" height="undefined"></canvas>
+                            <script>
+                            
+                            
+                            
+                            
+                           const myBarChart = new Chart(document.getElementById("chartjs-0"), {
+                                "type": "bar",
+                                "data": {
+                                    "labels": ["Space available","Filled Water Level"],
+                                    "datasets": [{
+                                        "label": "Tank Level",
+                                        "data": [],
+                                        "fill": false,
+                                        backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)',
+                                        'rgba(255, 205, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(201, 203, 207, 0.2)'
+                                        ],
+                                        borderColor: [
+                                        'rgb(255, 99, 132)',
+                                        'rgb(255, 159, 64)',
+                                        'rgb(255, 205, 86)',
+                                        'rgb(75, 192, 192)',
+                                        'rgb(54, 162, 235)',
+                                        'rgb(153, 102, 255)',
+                                        'rgb(201, 203, 207)'
+                                        ],
+                                        borderWidth: 1
+  
+                                    }]
+                                },
+                                "options": {
+                                        scales: {
+                                        y: {
+                                            beginAtZero: true,
+                                            min: 0,
+                                            max: 2000,
+                                           
+                                            }
+                                        },
+                                        ticks: {
+                                            stepSize: 5,
+                                        }                                                    
+                                      }
+                            });
+                            
+                            
+                            </script>
+                        </div>
+                    </div>
+                    <!--/Graph Card-->
+                </div>
+
+                
+    
+               
+
+
+            <!--/ Console Content-->
+
+        </div>
+
+
+    </div>
+    <!--/container-->
+
+   
+<footer class="p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://www.siemens.com">Siemens Automation</a> Remote administration interface for Industrial Control Systems
+    </span>
+</footer>
+
+
+    <script>
+    /*Toggle dropdown list*/
+    /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+
+    var userMenuDiv = document.getElementById("userMenu");
+    var userMenu = document.getElementById("userButton");
+
+    var navMenuDiv = document.getElementById("nav-content");
+    var navMenu = document.getElementById("nav-toggle");
+
+    document.onclick = check;
+
+    function check(e) {
+        var target = (e && e.target) || (event && event.srcElement);
+
+        //User Menu
+        if (!checkParent(target, userMenuDiv)) {
+            // click NOT on the menu
+            if (checkParent(target, userMenu)) {
+                // click on the link
+                if (userMenuDiv.classList.contains("invisible")) {
+                    userMenuDiv.classList.remove("invisible");
+                } else { userMenuDiv.classList.add("invisible"); }
+            } else {
+                // click both outside link and outside menu, hide menu
+                userMenuDiv.classList.add("invisible");
+            }
+        }
+
+        //Nav Menu
+        if (!checkParent(target, navMenuDiv)) {
+            // click NOT on the menu
+            if (checkParent(target, navMenu)) {
+                // click on the link
+                if (navMenuDiv.classList.contains("hidden")) {
+                    navMenuDiv.classList.remove("hidden");
+                } else { navMenuDiv.classList.add("hidden"); }
+            } else {
+                // click both outside link and outside menu, hide menu
+                navMenuDiv.classList.add("hidden");
+            }
+        }
+
+    }
+
+    function checkParent(t, elm) {
+        while (t.parentNode) {
+            if (t == elm) { return true; }
+            t = t.parentNode;
+        }
+        return false;
+    }
+    </script>
+
+</body>
+
+</html>

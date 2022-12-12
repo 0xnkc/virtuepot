@@ -1,0 +1,59 @@
+version: "3.9"
+services:
+
+  openplc:
+    build: openplc/ .
+    stdin_open: true # docker run -i
+    tty: true 
+    privileged: true
+    container_name: openplc
+    volumes:
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    networks:
+    ports:
+      - "8080:8080"
+      - "502:502"
+    wnet:
+        ipv4_address: 192.168.0.24
+
+  
+
+  openplc_hmi:
+    build: hmi/ .
+    stdin_open: true # docker run -i
+    tty: true 
+    privileged: true
+    container_name:  openplc_hmi
+    volumes:
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    networks:
+    ports:
+      - "7000:7000"
+    wnet:
+        ipv4_address: 192.168.0.25
+        
+networks:
+  wnet:
+    driver: bridge
+    name: icsnet
+    ipam:
+     config:
+       - subnet: 192.168.0.0/24
+         gateway: 192.168.0.1
+    driver_opts:
+      com.docker.network.bridge.name: br_icsnet
+  fnet:
+    driver: bridge
+    name: phynet
+    ipam:
+     config:
+       - subnet: 192.168.1.0/24
+         gateway: 192.168.1.1 
+    driver_opts:
+      com.docker.network.bridge.name: br_phynet
+
+
+volumes:
+    src:
