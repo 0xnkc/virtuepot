@@ -3,7 +3,7 @@ from datetime import datetime, time
 import random
 import time
 
-host = '164.92.214.167'  #ip of your raspberry pi
+host = '192.168.0.24'  #ip of your raspberry pi
 port = 502
 client = ModbusTcpClient(host, port)
 while True:
