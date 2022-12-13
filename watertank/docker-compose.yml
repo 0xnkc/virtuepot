@@ -17,8 +17,9 @@ services:
       - 502:502
     networks:
      wnet:
-        ipv4_address: 192.168.0.24
-
+        ipv4_address: 192.168.0.26
+     fnet:
+        ipv4_address: 192.168.1.13
   
 
   openplc_hmi:
@@ -36,7 +37,7 @@ services:
       - 5000:5000
     networks:
      wnet:
-        ipv4_address: 192.168.0.25
+        ipv4_address: 192.168.0.27
         
 networks:
   wnet:

@@ -17,12 +17,15 @@ services:
         expose: ["3306"]
         volumes:
             - scada_databases:/home/
+        networks:
+            wnet:
+                ipv4_address: 192.168.0.24
     scadalts:
         image: scadalts/scadalts:latest
         environment:
             - CATALINA_OPTS=-Xmx512m -Xms512m
         ports: 
-            - "8080:8080"
+            - "8000:8080"
         depends_on: 
             - database
         expose: ["8080", "8000"]
@@ -37,3 +40,27 @@ services:
             - --
             - /usr/local/tomcat/bin/catalina.sh
             - run
+        networks:
+            wnet:
+                ipv4_address: 192.168.0.25
+
+            
+networks:
+  wnet:
+    driver: bridge
+    name: icsnet
+    ipam:
+     config:
+       - subnet: 192.168.0.0/24
+         gateway: 192.168.0.1
+    driver_opts:
+      com.docker.network.bridge.name: br_icsnet
+  fnet:
+    driver: bridge
+    name: phynet
+    ipam:
+     config:
+       - subnet: 192.168.1.0/24
+         gateway: 192.168.1.1 
+    driver_opts:
+      com.docker.network.bridge.name: br_phynet

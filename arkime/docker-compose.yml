@@ -7,8 +7,6 @@ x-os_instance: &_os_instance
         memlock:
             soft: -1
             hard: -1
-    networks:
-        - arkime-os
 
 
 services:
@@ -28,6 +26,9 @@ services:
         volumes:
             - os1_data:/usr/share/opensearch/data
         restart: on-failure
+        networks:
+            mnet:
+                ipv4_address: 192.168.2.12
 
     os02:
         <<: *_os_instance
@@ -45,6 +46,9 @@ services:
         volumes:
             - os2_data:/usr/share/opensearch/data
         restart: on-failure
+        networks:
+            mnet:
+                ipv4_address: 192.168.2.13
 
     os03:
         <<: *_os_instance
@@ -62,6 +66,9 @@ services:
         volumes:
             - os3_data:/usr/share/opensearch/data
         restart: on-failure
+        networks:
+            mnet:
+                ipv4_address: 192.168.2.14
 
     arkime:
         build:
@@ -80,9 +87,10 @@ services:
             - arkime_config:/data/config
             - arkime_logs:/data/logs
             - arkime_pcap:/data/pcap
-        networks:
-            - arkime-os
         restart: on-failure
+        networks:
+            mnet:
+                ipv4_address: 192.168.2.11
 
 volumes:
     arkime_config:
@@ -93,5 +101,12 @@ volumes:
     arkime_pcap:
 
 networks:
-    arkime-os:
-    
+    mnet:
+    driver: bridge
+    name: phynet
+    ipam:
+     config:
+       - subnet: 192.168.2.0/24
+         gateway: 192.168.2.1 
+    driver_opts:
+      com.docker.network.bridge.name: br_mnet
