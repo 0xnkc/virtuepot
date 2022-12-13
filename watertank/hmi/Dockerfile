@@ -6,15 +6,8 @@ WORKDIR /hmi
 
 RUN pip3 install -r requirements.txt
 
-RUN chmod +x gunicorn.sh
+RUN chmod +x docker_entrypoint.sh
 
-#CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+# CMD ["gunicorn", "app:app", "-b", "0.0.0.0:5000"]
 
-# # ENTRYPOINT ["/bin/bash", "-c", "python3 tcp_modbus.py & python3 -m flask run --host=0.0.0.0 "]
-# ENV FLASK_APP=app.py
-# EXPOSE 5000
-# CMD [ "flask", "run","--host","0.0.0.0","--port","5000"]
-
-# ENTRYPOINT ["./gunicorn.sh"]
-
-CMD ["gunicorn", "app:app", "-b", "0.0.0.0:5000"]
+CMD ["./docker_entrypoint.sh"]
