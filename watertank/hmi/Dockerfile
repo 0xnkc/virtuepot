@@ -1,4 +1,4 @@
-FROM python:3.8-slim-buster
+FROM python:3-alpine
 
 COPY . /hmi
 
@@ -10,4 +10,6 @@ RUN chmod +x docker_entrypoint.sh
 
 #CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
 
-ENTRYPOINT ["/bin/bash", "-c", "python3 tcp_modbus.py & python3 -m flask run --host=0.0.0.0 "]
+# ENTRYPOINT ["/bin/bash", "-c", "python3 tcp_modbus.py & python3 -m flask run --host=0.0.0.0 "]
+EXPOSE 5000
+CMD [ "flask", "run","--host","0.0.0.0","--port","5000"]
