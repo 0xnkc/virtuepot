@@ -2,10 +2,15 @@ from flask import Flask, render_template, current_app
 from pymodbus.client.sync import ModbusTcpClient
 from datetime import datetime
 from flask import jsonify
-
+import secrets
 
 
 app = Flask(__name__)
+
+
+secret_key = secrets.token_hex(16)
+# example output, secret_key = 000d88cd9d90036ebdd237eb6b0db000
+app.config['SECRET_KEY'] = secret_key
 
 # datetime object containing current date and time
 def current_time():
