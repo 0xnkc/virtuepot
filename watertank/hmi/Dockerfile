@@ -15,4 +15,6 @@ RUN chmod +x gunicorn.sh
 # EXPOSE 5000
 # CMD [ "flask", "run","--host","0.0.0.0","--port","5000"]
 
-ENTRYPOINT ["./gunicorn.sh"]
+# ENTRYPOINT ["./gunicorn.sh"]
+
+CMD ["gunicorn", "app:app", "-b", "0.0.0.0:8000"]
