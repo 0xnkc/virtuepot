@@ -92,6 +92,18 @@ services:
             mnet:
                 ipv4_address: 192.168.2.11
 
+networks:
+  mnet:
+    driver: bridge
+    name: mnet
+    ipam:
+     config:
+       - subnet: 192.168.2.0/24
+         gateway: 192.168.2.1
+    driver_opts:
+      com.docker.network.bridge.name: br_mnet
+
+
 volumes:
     arkime_config:
     arkime_logs:
@@ -99,14 +111,3 @@ volumes:
     os2_data:
     os3_data:
     arkime_pcap:
-
-networks:
-    mnet:
-    driver: bridge
-    name: br_mnet
-    ipam:
-     config:
-       - subnet: 192.168.2.0/24
-         gateway: 192.168.2.1 
-    driver_opts:
-      com.docker.network.bridge.name: br_mnet
