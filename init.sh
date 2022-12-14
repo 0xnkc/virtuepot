@@ -20,3 +20,16 @@ sudo apt update
 # RUN Bottle Factory 
 docker-compose -f bottlefactory/docker-compose.yml up -d
 
+# RUN Water tank Openplc
+docker-compose -f watertank/docker-compose.yml up -d
+
+
+# RUN SCADA LTS
+docker-compose -f scada/docker-compose.yml up -d
+
+
+# RUN arkime
+docker-compose -f arkime/docker-compose.yml up -d
+
+#Check the running containers 
+docker ps
