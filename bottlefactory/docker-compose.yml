@@ -10,6 +10,8 @@ services:
       - src:/src
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
+    ports:
+      - 11211:11211
     networks:
       fnet:
         ipv4_address: 192.168.1.31
@@ -24,6 +26,8 @@ services:
       - src:/src
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
+    ports:
+      - 5502:502
     networks:
       wnet:
         ipv4_address: 192.168.0.11
@@ -43,6 +47,8 @@ services:
       - src:/src
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
+    ports:
+      - 5503:502
     networks:
       wnet:
         ipv4_address: 192.168.0.12
