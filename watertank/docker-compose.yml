@@ -59,8 +59,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5020:5020"
-    wnet:
-        ipv4_address: 192.168.0.29
+    networks:
+     wnet:
+       ipv4_address: 192.168.0.29
 
 networks:
   wnet:
