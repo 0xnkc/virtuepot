@@ -47,6 +47,7 @@ services:
       dockerfile: Dockerfile
     ports: 
       - "7799:7799"
+      - "9977:9977"
       
     networks:
      wnet:
