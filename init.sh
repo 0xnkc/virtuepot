@@ -17,6 +17,8 @@ sleep 3
 sudo apt update
 
 
+ sysctl -w vm.max_map_count=262144
+ 
 # RUN Bottle Factory 
 docker-compose -f bottlefactory/docker-compose.yml up -d
 

@@ -38,7 +38,25 @@ services:
     networks:
      wnet:
         ipv4_address: 192.168.0.27
-        
+
+
+  opemplc_simulation:
+    container_name: openplc_sim_server
+    build: ./server
+    ports: 
+      - "7799:7799"
+      - "9977:9977"
+    wnet:
+        ipv4_address: 192.168.0.28
+
+  openplc_gateway:
+    container_name: openplc_sim_gateway
+    build: ./gateway
+    ports:
+      - "5020:5020"
+    wnet:
+        ipv4_address: 192.168.0.29
+
 networks:
   wnet:
     driver: bridge
