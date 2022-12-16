@@ -97,9 +97,9 @@ def run_server():
 
     # run the server you want after creating tasks
 
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.connect(("simulation", 9977))
-    log.debug(f"Connected to: {sock}")
+    # sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # sock.connect(("simulation", 9977))
+    # log.debug(f"Connected to: {sock}")
 
     loop = asyncio.get_event_loop()
     loop.create_task(start_servers(context, identity, loop))
