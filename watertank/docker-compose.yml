@@ -40,18 +40,18 @@ services:
         ipv4_address: 192.168.0.27
 
 
-  # openplc_simulation:
-  #   container_name: openplc_sim_server
-  #   build: 
-  #     context: ./server
-  #     dockerfile: Dockerfile
-  #   ports: 
-  #     - "7799:7799"
-  #     - "9977:9977"
+  openplc_simulation:
+    container_name: openplc_sim_server
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    ports: 
+      - "7799:7799"
+      - "9977:9977"
       
-  #   networks:
-  #    wnet:
-  #      ipv4_address: 192.168.0.28
+    networks:
+     wnet:
+       ipv4_address: 192.168.0.28
 
   openplc_gateway:
     container_name: openplc_sim_gateway
