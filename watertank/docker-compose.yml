@@ -29,6 +29,7 @@ services:
     stdin_open: true # docker run -i
     tty: true 
     privileged: true
+    entrypoint: ["gunicorn", "app:app", "-b", "0.0.0.0:5000"]
     container_name:  openplc_hmi
     volumes:
       - "/etc/timezone:/etc/timezone:ro"
@@ -43,26 +44,16 @@ services:
   openplc_simulation:
     container_name: openplc_sim_server
     build: 
-      context: ./server
+      context: ./hmi
       dockerfile: Dockerfile
-    ports: 
-      - "7799:7799"
-      - "9977:9977"
-      
+    stdin_open: true # docker run -i
+    tty: true 
+    privileged: true
+    entrypoint: ["python3", "tcp_modbus.py"]
     networks:
      wnet:
        ipv4_address: 192.168.0.28
 
-  openplc_gateway:
-    container_name: openplc_sim_gateway
-    build: 
-      context: ./gateway
-      dockerfile: Dockerfile
-    ports:
-      - "5020:5020"
-    networks:
-     wnet:
-       ipv4_address: 192.168.0.29
 
 networks:
   wnet:
