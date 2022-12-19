@@ -44,12 +44,12 @@ services:
   openplc_simulation:
     container_name: openplc_sim_server
     build: 
-      context: ./hmi
+      context: ./openplc_sim_server
       dockerfile: Dockerfile
     stdin_open: true # docker run -i
     tty: true 
     privileged: true
-    entrypoint: ["python3", "tcp_modbus.py"]
+    # entrypoint: ["python3", "tcp_modbus.py"]
     networks:
      wnet:
        ipv4_address: 192.168.0.28
