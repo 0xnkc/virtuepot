@@ -44,7 +44,7 @@ services:
   openplc_simulation:
     container_name: openplc_sim_server
     build: 
-      context: ./openplc_sim_server
+      context: ./openplc_sim
       dockerfile: Dockerfile
     stdin_open: true # docker run -i
     tty: true 
