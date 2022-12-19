@@ -23,7 +23,7 @@ def api():
     port = 502
     client = ModbusTcpClient(host, port)
     client.connect()
-    result = client.read_holding_registers(20,29,unit=1)
+    result = client.read_holding_registers(0x01,10,unit=0)
     data = {
             "datetime": current_time(),
             "data": result.registers 
