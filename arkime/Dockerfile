@@ -18,7 +18,7 @@ ENV ARKIME_INTERFACE "eth0"
 ENV ARKIME_ADMIN_PASSWORD "admin"
 ENV ARKIME_HOSTNAME "localhost"
 ENV ARKIMEDIR "/opt/arkime"
-ENV CAPTURE "off"
+ENV CAPTURE "on"
 ENV VIEWER "on"
 
 # Install Arkime
