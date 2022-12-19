@@ -88,9 +88,10 @@ services:
             - arkime_logs:/data/logs
             - arkime_pcap:/data/pcap
         restart: on-failure
-        networks:
-            mnet:
-                ipv4_address: 192.168.2.11
+        cap_add:
+                - NET_RAW
+        network_mode: "host"
+        command: -i af_packet::eth0 local
 
 networks:
   mnet:
