@@ -32,7 +32,7 @@ while True:
          data = random.randint(10,40)
          list.append(data)
 
-    read_values = client.getValues(3, 0, count=2)
+    read_values = client.read_holding_registers(3, 0, count=2)
     print(f"Read values: {read_values}")
 
     wr = client.write_registers(4,data)
