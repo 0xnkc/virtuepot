@@ -49,7 +49,7 @@ services:
 
 
 networks:
-  wnet:
+  elastinet:
     driver: bridge
     name: elastinet
     ipam:
