@@ -34,11 +34,11 @@
         document.getElementById('inflow').innerHTML = data.data[3]+ " L/s";
         document.getElementById('height').innerHTML = "2000"+ " MM";
         document.getElementById('setpoint').innerHTML = "1000"+ " MM";
-        document.getElementById('level').innerHTML = 1050-data.data[3] + " MM";
-        myBarChart.data.datasets[0].data[0] = 2000-(1050+data.data[3]);
-        myBarChart.data.datasets[0].data[1] = 1050-data.data[3];
+        document.getElementById('level').innerHTML = 1050-data.data[4]+ " MM";
+        myBarChart.data.datasets[0].data[0] = 2000-(1050+data.data[4]);
+        myBarChart.data.datasets[0].data[1] = 1050-data.data[4];
         myBarChart.update();
-        document.getElementById('outflow').innerHTML = data.data[3]+ " L/s";
+        document.getElementById('outflow').innerHTML = data.data[4]+ " L/s";
         ajax_data = 1050-data.data[3] ;
 
     },
