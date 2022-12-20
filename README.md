@@ -1,7 +1,7 @@
 # VIRTUEPOT an ICS Honeypot
 A high-interaction virtual ICS honeypot that simulates a PLC and provides physical process simulation.
 
-<img src="./doc/images/VirtuePot.png" alt="ICS architecture" />
+<img src="./doc/images/block.png" alt="ICS architecture" />
 
 The above-mentioned diagram shows the draft copy of the architecture 
 
