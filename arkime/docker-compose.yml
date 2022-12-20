@@ -26,10 +26,10 @@ services:
         volumes:
             - os1_data:/usr/share/opensearch/data
         restart: on-failure
-        network_mode: "host"
-        # networks:
-        #     mnet:
-        #         ipv4_address: 192.168.2.12
+        # network_mode: host
+        networks:
+            mnet:
+                ipv4_address: 192.168.2.12
 
     os02:
         <<: *_os_instance
@@ -47,10 +47,10 @@ services:
         volumes:
             - os2_data:/usr/share/opensearch/data
         restart: on-failure
-        network_mode: "host"
-        # networks:
-        #     mnet:
-        #         ipv4_address: 192.168.2.13
+        # network_mode: host
+        networks:
+            mnet:
+                ipv4_address: 192.168.2.13
 
     os03:
         <<: *_os_instance
@@ -68,10 +68,10 @@ services:
         volumes:
             - os3_data:/usr/share/opensearch/data
         restart: on-failure
-        network_mode: "host"
-        # networks:
-        #     mnet:
-        #         ipv4_address: 192.168.2.14
+        # network_mode: host
+        networks:
+            mnet:
+                ipv4_address: 192.168.2.14
 
     arkime:
         build:
@@ -91,10 +91,13 @@ services:
             - arkime_logs:/data/logs
             - arkime_pcap:/data/pcap
         restart: on-failure
-        cap_add:
-                - NET_RAW
-        network_mode: "host"
-        command: -i af_packet::eth0 local
+        # cap_add:
+        #         - NET_RAW
+        # network_mode: host
+        # command: -i af_packet::eth0 local
+        networks:
+            mnet:
+                ipv4_address: 192.168.2.15
 
 networks:
   mnet:
