@@ -61,6 +61,9 @@ redef digest_salt = "blacktop";
 @load protocols/conn/known-services
 @load protocols/ssl/known-certs
 
+# Script load ICS  CISA
+@load cisagov
+
 # This script enables SSL/TLS certificate validation.
 @load protocols/ssl/validate-certs
 

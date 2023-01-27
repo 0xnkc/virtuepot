@@ -28,14 +28,14 @@ while True:
 
 # To Write values to multiple registers
     list = []
-    for i in range(3):
+    for i in range(2):
          data = random.randint(10,40)
          list.append(data)
 
     # read_values = client.read_holding_registers(3, 0, count=2)
     # print(f"Read values: {read_values}")
 
-    wr = client.write_registers(4,list,unit=1)
+    wr = client.write_registers(100,list,unit=1)
     # write to multiple registers using list of data
     # wr = client.write_registers(20,list,unit=1)
     time.sleep(0.1)
