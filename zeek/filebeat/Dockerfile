@@ -23,5 +23,5 @@ RUN chmod +x /usr/local/bin/entrypoint
 
 WORKDIR /usr/share/filebeat
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["entrypoint"]
 CMD ["-h"]
