@@ -109,10 +109,10 @@ redef digest_salt = "blacktop";
 
 
 #ICS Protocol 
-@load icsnpp/s7comm
+#@load icsnpp/s7comm
 
-@load icsnpp-enip
+#@load icsnpp-enip
 
-@load icsnpp-dnp3
+#@load icsnpp-dnp3
 
-@load icsnpp-modbus
+#@load icsnpp-modbus
