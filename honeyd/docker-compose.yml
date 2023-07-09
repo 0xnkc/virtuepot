@@ -6,7 +6,7 @@ services:
     entrypoint: ["honeyd", "-d", "-i", "eth0", "-f", "honeyd.conf", "-l", "/app/logs/test.log"]
     container_name: honeyd
     volumes:
-      - app:/app/logs/
+      - src:/app/logs/
     ports:
       - 502:502
       - 8080:8080
