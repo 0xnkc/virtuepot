@@ -1,0 +1,43 @@
+version: "3.9"
+services:
+  honeyd:
+    build: .
+    privileged: true
+    entrypoint: ["honeyd", "-d", "-i", "eth0", "-f", "honeyd.conf", "-l", "/app/logs/test.log"]
+    container_name: honeyd
+    volumes:
+      - app:/app/logs/
+    ports:
+      - 502:502
+      - 8080:8080
+      - 445:445 
+      - 16992:16992
+      - 16993:16993
+    networks:
+      fnet:
+        ipv4_address: 192.168.1.32
+      
+        
+networks:
+  wnet:
+    driver: bridge
+    name: icsnet
+    ipam:
+     config:
+       - subnet: 192.168.0.0/24
+         gateway: 192.168.0.1
+    driver_opts:
+      com.docker.network.bridge.name: br_icsnet
+  fnet:
+    driver: bridge
+    name: phynet
+    ipam:
+     config:
+       - subnet: 192.168.1.0/24
+         gateway: 192.168.1.1 
+    driver_opts:
+      com.docker.network.bridge.name: br_phynet
+
+
+volumes:
+    src:

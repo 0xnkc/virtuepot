@@ -1,0 +1,1 @@
+sudo docker run -v path/to/log:/app/logs/ -p "ports" honeypot
