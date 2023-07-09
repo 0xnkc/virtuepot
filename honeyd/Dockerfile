@@ -37,7 +37,7 @@ RUN cd Honeyd \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
-RUN mkdir /app/logs
+RUN mkdir -p /app/logs
 RUN touch "/app/logs/test.log"
 RUN ls -alh /app
 RUN ip a
