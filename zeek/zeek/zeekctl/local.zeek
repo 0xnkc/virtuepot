@@ -106,3 +106,13 @@ redef digest_salt = "blacktop";
 
 # Comment this to unload Corelight/CommunityID
 @load Corelight/CommunityID
+
+
+#ICS Protocol 
+@load icsnpp/s7comm
+
+@load icsnpp-enip
+
+@load icsnpp-dnp3
+
+@load icsnpp-modbus
