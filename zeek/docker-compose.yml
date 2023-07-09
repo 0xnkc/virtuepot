@@ -70,8 +70,8 @@ services:
     cap_add:
       - NET_RAW
     network_mode: "host"
-    command: -i af_packet::eth0 local
-
+    # command: zeek -i af_packet::eth0 local
+    entrypoint: ["zeek", "-i", "af_packet::eth0", "local"]
 
 networks:
   elastinet:
