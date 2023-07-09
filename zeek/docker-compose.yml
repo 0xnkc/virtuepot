@@ -39,6 +39,8 @@ services:
       - kibana
     build: 
      context: ./filebeat
+     args:
+             VERSION : 7.7.1
      dockerfile: Dockerfile
     # image: blacktop/filebeat:7.4.0
     stdin_open: true # docker run -i
