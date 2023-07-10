@@ -14,7 +14,7 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
     ports:
       - 8080:8080
-      - 502:502
+      - 192.168.0.26:502
     networks:
      wnet:
         ipv4_address: 192.168.0.26

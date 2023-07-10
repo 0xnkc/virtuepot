@@ -43,9 +43,9 @@ RUN ls -alh /app
 RUN ip a
 
 ADD honeyd.conf .
-
+ADD Siemens-S7-1200.py .
 # Ports
-EXPOSE 502 445 16992 16993
+EXPOSE 502 102
  
 # CMD ["honeyd", "-d", "-i", "eth0", "-f", "honeyd.conf", "-l", "/app/logs/test.log"]
 #"-d", "-f", "honeyd.conf", "-l", "/app/logs/test.log"]
