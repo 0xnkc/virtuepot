@@ -1,9 +1,9 @@
 version: "3.9"
 services:
   openplc:
-    build: 
+    #build: 
      #context: ./OpenPLC_v2
-     dockerfile: Dockerfile
+     #dockerfile: Dockerfile
     image: nikhilkc96/openplc
     stdin_open: true # docker run -i
     tty: true 
