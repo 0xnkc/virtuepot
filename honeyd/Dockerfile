@@ -46,7 +46,9 @@ ADD honeyd.conf .
 # ADD Siemens-S7-1200.py .
 # # Ports
 # EXPOSE 502 102
- 
+ADD libsnap7.so /usr/lib/libsnap7.so
+ADD s7commServer /usr/share/honeyd/s7commServer
+RUN chmod 777 /usr/share/honeyd/s7commServer
 # CMD ["honeyd", "-d", "-i", "eth0", "-f", "honeyd.conf", "-l", "/app/logs/test.log"]
 #"-d", "-f", "honeyd.conf", "-l", "/app/logs/test.log"]
 
