@@ -20,7 +20,7 @@ import time
 #     };
 
 host = '192.168.0.26'  #ip of your modbus
-port = 505
+port = 502
 client = ModbusTcpClient(host, port)
 while True:
     client.connect()
