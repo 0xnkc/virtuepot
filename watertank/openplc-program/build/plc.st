@@ -1,12 +1,35 @@
+TYPE
+  LOGLEVEL : (CRITICAL, WARNING, INFO, DEBUG) := INFO;
+END_TYPE
+
+FUNCTION_BLOCK LOGGER
+  VAR_INPUT
+    TRIG : BOOL;
+    MSG : STRING;
+    LEVEL : LOGLEVEL := INFO;
+  END_VAR
+  VAR
+    TRIG0 : BOOL;
+  END_VAR
+
+  IF TRIG AND NOT TRIG0 THEN
+  {{
+   LogMessage(GetFbVar(LEVEL),(char*)GetFbVar(MSG, .body),GetFbVar(MSG, .len));
+  }}
+  END_IF;
+  TRIG0:=TRIG;
+END_FUNCTION_BLOCK
+
+
 PROGRAM Main
   VAR
-    I_PbFill AT %IX100.0 : BOOL;
-    I_PbDischarge AT %IX100.1 : BOOL := True;
-    Q_FillValve AT %QX100.0 : BOOL;
-    Q_FillLight AT %QX100.1 : BOOL;
-    Q_DischargeValve AT %QX100.2 : BOOL;
-    Q_LightDischarge AT %QX100.3 : BOOL;
-    Q_Display AT %QW100 : INT;
+    I_PbFill : BOOL;
+    I_PbDischarge : BOOL := True;
+    Q_FillValve : BOOL;
+    Q_FillLight : BOOL;
+    Q_DischargeValve : BOOL;
+    Q_LightDischarge : BOOL;
+    Q_Display : INT;
   END_VAR
   VAR
     Filling : BOOL;
@@ -24,7 +47,7 @@ PROGRAM Main
     Placeholder : INT;
   END_VAR
   VAR
-    Simulation AT %QW101 : INT;
+    Simulation : INT;
   END_VAR
   VAR
     _TMP_NOT11_OUT : BOOL;
