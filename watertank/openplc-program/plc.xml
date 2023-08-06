@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <project xmlns:ns1="http://www.plcopen.org/xml/tc6_0201" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.plcopen.org/xml/tc6_0201">
   <fileHeader companyName="Unknown" productName="Unnamed" productVersion="1" creationDateTime="2021-03-11T20:50:13"/>
-  <contentHeader name="Unnamed" modificationDateTime="2023-08-05T13:26:45">
+  <contentHeader name="Unnamed" modificationDateTime="2023-08-06T10:41:56">
     <coordinateInfo>
       <fbd>
         <scaling x="10" y="10"/>
@@ -724,10 +724,21 @@
               </connectionPointIn>
               <expression>Q_DischargeValve</expression>
             </outVariable>
-            <comment localId="49" height="80" width="720">
-              <position x="50" y="20"/>
+            <comment localId="49" height="300" width="390">
+              <position x="860" y="20"/>
               <content>
-                <xhtml:p><![CDATA[Simulation of the water tank]]></xhtml:p>
+                <xhtml:p><![CDATA[Simulation of the water tank
+
+
+
+varName: __IX100_0 varType: BOOL
+varName: __IX100_1 varType: BOOL
+varName: __QX100_0 varType: BOOL
+varName: __QX100_1 varType: BOOL
+varName: __QX100_2 varType: BOOL
+varName: __QX100_3 varType: BOOL
+varName: __QW100 varType: INT
+varName: __QW101 varType: INT]]></xhtml:p>
               </content>
             </comment>
             <inVariable localId="50" executionOrderId="0" height="30" width="100" negated="false">
