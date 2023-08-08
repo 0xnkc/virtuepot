@@ -1,6 +1,5 @@
 FROM alpine:3.14 as builder
 
-LABEL maintainer "https://github.com/blacktop"
 
 ENV ZEEK_VERSION 4.1.1
 
@@ -72,7 +71,6 @@ RUN echo "===> Size of the Zeek install..." \
 ####################################################################################################
 FROM alpine:3.14
 
-LABEL maintainer "https://github.com/blacktop"
 
 RUN apk --no-cache add ca-certificates zlib openssl libstdc++ libpcap libmaxminddb libgcc fts python3 bash
 
@@ -89,6 +87,12 @@ WORKDIR /pcap
 
 ENV ZEEKPATH .:/data/config:/usr/local/zeek/share/zeek:/usr/local/zeek/share/zeek/policy:/usr/local/zeek/share/zeek/site
 ENV PATH $PATH:/usr/local/zeek/bin
+
+RUN zkg refresh
+RUN zkg install icsnpp-modbus
+
+RUN zkg refresh
+RUN zkg install icsnpp-s7comm
 
 ENTRYPOINT ["zeek"]
 CMD ["-h"]
