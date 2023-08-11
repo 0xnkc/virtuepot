@@ -83,3 +83,8 @@ networks:
          gateway: 192.168.3.1
     driver_opts:
       com.docker.network.bridge.name: elastinet
+
+
+
+volumes:
+    pcap:
