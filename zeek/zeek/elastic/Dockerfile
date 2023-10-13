@@ -118,5 +118,11 @@ WORKDIR /pcap
 ENV ZEEKPATH .:/data/config:/usr/local/zeek/share/zeek:/usr/local/zeek/share/zeek/policy:/usr/local/zeek/share/zeek/site
 ENV PATH $PATH:/usr/local/zeek/bin
 
-# ENTRYPOINT ["zeek"]
+RUN zkg refresh
+RUN zkg install icsnpp-modbus
+
+RUN zkg refresh
+RUN zkg install icsnpp-s7comm
+
+ENTRYPOINT ["zeek"]
 
