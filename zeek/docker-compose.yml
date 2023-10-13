@@ -4,7 +4,6 @@ services:
     build: 
      context: ./elasticsearch
      dockerfile: Dockerfile
-    # image: blacktop/elasticsearch:x-pack-7.4.0
     stdin_open: true # docker run -i
     tty: true 
     privileged: true
@@ -21,7 +20,6 @@ services:
     build: 
      context: ./kibana
      dockerfile: Dockerfile
-    # image: blacktop/kibana:x-pack-7.4.0
     stdin_open: true # docker run -i
     tty: true 
     privileged: true
@@ -42,7 +40,6 @@ services:
      args:
              VERSION : 7.7.1
      dockerfile: Dockerfile
-    # image: blacktop/filebeat:7.4.0
     stdin_open: true # docker run -i
     tty: true 
     privileged: true
@@ -56,12 +53,11 @@ services:
       - elastinet
 
   zeek:
-    depends_on:
-      - filebeat
+    # depends_on:
+    #   - filebeat
     build: 
      context: ./zeek/elastic
      dockerfile: Dockerfile
-    #image: blacktop/zeek:elastic
     stdin_open: true # docker run -i
     tty: true 
     privileged: true
