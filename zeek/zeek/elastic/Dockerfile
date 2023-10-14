@@ -80,8 +80,7 @@ RUN echo "===> Installing Community-Id..." \
 RUN echo "===> Installing icsnpp-modbus..." \
   && cd /tmp \
   && git clone https://github.com/cisagov/icsnpp-modbus.git \
-  && cd /tmp/icsnpp-modbus/ \
-  && cp -r icsnpp-modbus/scripts/ /usr/local/zeek/share/zeek/site/icsnpp-modbus
+  && mv icsnpp-modbus/scripts/ /usr/local/zeek/share/zeek/site/icsnpp-modbus
 
 RUN echo "===> Installing corelight/json-streaming-logs package..." \
   && cd /tmp \
