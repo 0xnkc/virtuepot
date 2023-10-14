@@ -67,17 +67,15 @@ RUN echo "===> Installing Community-Id..." \
   && /usr/local/zeek/bin/zeek -NN Corelight::CommunityID
 
   RUN echo "===> Installing icsnpp-modbus..." \
+  && cd /tmp \
   && git clone https://github.com/cisagov/icsnpp-s7comm.git \
-  && cd icsnpp-s7comm/ \
+  && cd /tmp/icsnpp-s7comm/ \
   && ./configure \
   && make \ 
-  && export ZEEK_PLUGIN_PATH=$PWD/build/ \
-  && zeek -N # Ensure everything compiled correctly and you are able to see ICSNPP::S7COMM \
   && sudo make install \
-  && unset ZEEK_PLUGIN_PATH \
-  && zeek -N # Ensure everything installed correctly and you are able to see ICSNPP::S7COMM
+  && /usr/local/zeek/bin/zeek -NN ICSNPP::S7COMM
 
-  
+
 RUN echo "===> Installing corelight/json-streaming-logs package..." \
   && cd /tmp \
   && git clone https://github.com/corelight/json-streaming-logs.git json-streaming-logs \
