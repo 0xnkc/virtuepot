@@ -122,7 +122,7 @@ redef LogAscii::use_json=T;
 
 
 #ICS Protocol 
-@load icsnpp/s7comm
+#@load icsnpp/s7comm
 
 #@load icsnpp-enip
 
