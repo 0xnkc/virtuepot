@@ -66,6 +66,18 @@ RUN echo "===> Installing Community-Id..." \
   && make install \
   && /usr/local/zeek/bin/zeek -NN Corelight::CommunityID
 
+  RUN echo "===> Installing icsnpp-modbus..." \
+  && git clone https://github.com/cisagov/icsnpp-s7comm.git \
+  && cd icsnpp-s7comm/ \
+  && ./configure \
+  && make \ 
+  && export ZEEK_PLUGIN_PATH=$PWD/build/ \
+  && zeek -N # Ensure everything compiled correctly and you are able to see ICSNPP::S7COMM \
+  && sudo make install \
+  && unset ZEEK_PLUGIN_PATH \
+  && zeek -N # Ensure everything installed correctly and you are able to see ICSNPP::S7COMM
+
+  
 RUN echo "===> Installing corelight/json-streaming-logs package..." \
   && cd /tmp \
   && git clone https://github.com/corelight/json-streaming-logs.git json-streaming-logs \
@@ -118,16 +130,16 @@ WORKDIR /pcap
 ENV ZEEKPATH .:/data/config:/usr/local/zeek/share/zeek:/usr/local/zeek/share/zeek/policy:/usr/local/zeek/share/zeek/site
 ENV PATH $PATH:/usr/local/zeek/bin
 
-RUN apk add py3-pip
-RUN pip3 install GitPython semantic-version
-RUN pip3 install zkg
-RUN export GIT_PYTHON_REFRESH=quiet
-RUN zkg autoconfig
-RUN zkg refresh
-RUN zkg install icsnpp-modbus
+# RUN apk add py3-pip
+# RUN pip3 install GitPython semantic-version
+# RUN pip3 install zkg
+# RUN export GIT_PYTHON_REFRESH=quiet
+# RUN zkg autoconfig
+# RUN zkg refresh
+# RUN zkg install icsnpp-modbus
 
-RUN zkg refresh
-RUN zkg install icsnpp-s7comm
+# RUN zkg refresh
+# RUN zkg install icsnpp-s7comm
 
 ENTRYPOINT ["zeek"]
 
