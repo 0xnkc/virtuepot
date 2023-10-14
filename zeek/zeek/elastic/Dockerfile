@@ -70,7 +70,7 @@ RUN echo "===> Installing Community-Id..." \
   && cd /tmp \
   && git clone https://github.com/cisagov/icsnpp-s7comm.git \
   && cd /tmp/icsnpp-s7comm/ \
-  && CC=clang ./configure --with-kernel=/usr --zeek-dist=/tmp/zeek \
+  && CC=clang ./configure --zeek-dist=/tmp/zeek \
   && make -j 2 \
   && make install \
   && /usr/local/zeek/bin/zeek -NN ICSNPP::S7COMM
