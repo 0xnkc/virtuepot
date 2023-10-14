@@ -1,6 +1,6 @@
 FROM alpine:3.14 as builder
 
-LABEL maintainer "https://github.com/blacktop"
+LABEL maintainer "Nikhil"
 
 ENV ZEEK_VERSION 4.1.1
 
@@ -98,7 +98,7 @@ RUN cd /tmp \
 ####################################################################################################
 FROM alpine:3.14
 
-LABEL maintainer "https://github.com/blacktop"
+LABEL maintainer "Nikhil"
 
 RUN apk --no-cache add ca-certificates zlib openssl libstdc++ libpcap libgcc fts libmaxminddb
 
@@ -118,6 +118,7 @@ WORKDIR /pcap
 ENV ZEEKPATH .:/data/config:/usr/local/zeek/share/zeek:/usr/local/zeek/share/zeek/policy:/usr/local/zeek/share/zeek/site
 ENV PATH $PATH:/usr/local/zeek/bin
 
+RUN apk add py3-pip
 RUN pip3 install gitpython semantic-version
 RUN pip3 install zkg
 
