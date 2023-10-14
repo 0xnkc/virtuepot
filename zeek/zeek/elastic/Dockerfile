@@ -121,7 +121,7 @@ ENV PATH $PATH:/usr/local/zeek/bin
 RUN apk add py3-pip
 RUN pip3 install semantic-version
 RUN pip3 install zkg
-
+RUN export GIT_PYTHON_REFRESH=quiet
 RUN zkg refresh
 RUN zkg install icsnpp-modbus
 
