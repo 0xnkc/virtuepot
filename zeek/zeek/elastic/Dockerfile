@@ -118,6 +118,9 @@ WORKDIR /pcap
 ENV ZEEKPATH .:/data/config:/usr/local/zeek/share/zeek:/usr/local/zeek/share/zeek/policy:/usr/local/zeek/share/zeek/site
 ENV PATH $PATH:/usr/local/zeek/bin
 
+RUN pip3 install gitpython semantic-version
+RUN pip3 install zkg
+
 RUN zkg refresh
 RUN zkg install icsnpp-modbus
 
