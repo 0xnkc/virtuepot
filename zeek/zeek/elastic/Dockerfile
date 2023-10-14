@@ -119,7 +119,7 @@ ENV ZEEKPATH .:/data/config:/usr/local/zeek/share/zeek:/usr/local/zeek/share/zee
 ENV PATH $PATH:/usr/local/zeek/bin
 
 RUN apk add py3-pip
-RUN pip3 install semantic-version
+RUN pip3 install GitPython semantic-version
 RUN pip3 install zkg
 RUN export GIT_PYTHON_REFRESH=quiet
 RUN zkg autoconfig
