@@ -81,8 +81,7 @@ RUN echo "===> Installing icsnpp-modbus..." \
   && cd /tmp \
   && git clone https://github.com/cisagov/icsnpp-modbus.git \
   && cd /tmp/icsnpp-modbus/ \
-  && zeek_install_dir=$(dirname $(dirname `which zeek`)) \
-  && cp -r icsnpp-modbus/scripts/ $zeek_install_dir/share/zeek/site/icsnpp-modbus
+  && cp -r icsnpp-modbus/scripts/ /usr/local/zeek/share/zeek/site/icsnpp-modbus
 
 RUN echo "===> Installing corelight/json-streaming-logs package..." \
   && cd /tmp \
