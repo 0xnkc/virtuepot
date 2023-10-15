@@ -8,8 +8,8 @@ services:
     tty: true 
     privileged: true
     environment:
-      - bootstrap.memory_lock=true
-      - discovery.type=single-node
+      # - bootstrap.memory_lock=true
+      # - discovery.type=single-node
       - ELASTICSEARCH_USERNAME=elastic
       - ELASTIC_PASSWORD=Virtue@123
       - xpack.security.enabled=true
