@@ -28,10 +28,10 @@ services:
     stdin_open: true # docker run -i
     tty: true 
     privileged: true
-    # environment:
+    environment:
     #   - ELASTICSEARCH_USERNAME=elastic
     #   - ELASTICSEARCH_PASSWORD=Virtue@123
-    - xpack.reporting.enabled=false
+       - xpack.reporting.enabled=false
     ports:
       - "5601:5601"
     links:
