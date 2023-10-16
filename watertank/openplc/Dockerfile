@@ -40,13 +40,11 @@ RUN cd Honeyd \
     && make install
 
 
-# COPY signatures.sh /app/signatures.sh
-WORKDIR /app
-ADD honeyd.conf /app/honeyd.conf
-# RUN chmod +x signatures.sh && ./signatures.sh
+
+
 
 WORKDIR /home/
-
+ADD honeyd.conf .
 # RUN git clone https://github.com/thiagoralves/OpenPLC_v3.git
 # WORKDIR /home/OpenPLC_v3/
 # RUN ls -al install.sh
@@ -64,4 +62,4 @@ WORKDIR /home/
 EXPOSE 502
 EXPOSE 8080
 
-CMD  nohup honeyd -d -f /app/honeyd.conf &> honeyd.log; sudo nodejs /OpenPLC_v2/server.js
+CMD  nohup honeyd -d -f /home/honeyd.conf &> honeyd.log; sudo nodejs /OpenPLC_v2/server.js
