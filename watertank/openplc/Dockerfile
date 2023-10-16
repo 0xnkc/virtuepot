@@ -53,6 +53,7 @@ RUN apt-get install -y build-essential \
     python2.7  \
     sqlite3
 
+RUN pip install --upgrade pip  
 
 RUN pip install flask flask-login pyserial pymodbus
 
