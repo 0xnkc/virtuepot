@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:xenial
 
 USER root
 WORKDIR /root/
@@ -50,6 +50,7 @@ RUN apt-get install -y build-essential \
     sudo \
     automake
 
+WORKDIR /home/
 RUN git clone https://github.com/DataSoft/Honeyd.git
 RUN cd Honeyd \
     && ./autogen.sh \
