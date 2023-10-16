@@ -49,8 +49,6 @@ RUN apt-get install -y build-essential \
     iputils-ping \
     sudo \
     automake \
-    python-pip \
-    python2.7  \
     sqlite3
 
 RUN pip install --upgrade pip  
