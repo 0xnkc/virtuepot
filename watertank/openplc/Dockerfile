@@ -51,9 +51,9 @@ RUN apt-get install -y build-essential \
     automake \
     sqlite3
 
-RUN pip install --upgrade pip  
+# RUN pip install --upgrade pip  
 
-RUN pip install flask flask-login pyserial pymodbus
+# RUN pip install flask flask-login pyserial pymodbus
 
 WORKDIR /home/
 RUN git clone https://github.com/DataSoft/Honeyd.git
