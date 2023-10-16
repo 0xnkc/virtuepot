@@ -57,7 +57,7 @@ RUN sudo apt-get install -y build-essential pkg-config bison flex autoconf autom
 RUN git clone https://github.com/thiagoralves/OpenPLC_v2
 WORKDIR /home/OpenPLC_v2/
 RUN sudo chmod +x ./build.sh
-RUN printf "n\n1\n" | bash /build.sh
+RUN printf "n\n1\n" | ./build.sh
 
 
 
