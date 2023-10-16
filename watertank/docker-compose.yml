@@ -12,6 +12,7 @@ services:
     volumes:
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
+      - openplc_data:/home
     ports:
       - 8080:8080
       - 502:502
@@ -76,3 +77,6 @@ networks:
       com.docker.network.bridge.name: br_phynet
 
 
+
+volumes:
+    openplc_data:

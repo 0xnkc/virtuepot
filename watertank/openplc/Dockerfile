@@ -40,10 +40,10 @@ RUN cd Honeyd \
     && make install
 
 
-COPY signatures.sh /app/signatures.sh
+# COPY signatures.sh /app/signatures.sh
 WORKDIR /app
 ADD honeyd.conf /app/honeyd.conf
-RUN chmod +x signatures.sh && ./signatures.sh
+# RUN chmod +x signatures.sh && ./signatures.sh
 
 WORKDIR /home/
 
@@ -59,9 +59,9 @@ WORKDIR /home/OpenPLC_v2/
 RUN sudo chmod +x ./build.sh
 RUN printf "n\n1\n" | ./build.sh
 
-
+WORKDIR /home/
 
 EXPOSE 502
 EXPOSE 8080
 
-CMD  nohup honeyd -d -f /app/honeyd.conf &> honeyd.log; sudo nodejs server.js
+CMD  nohup honeyd -d -f /app/honeyd.conf &> honeyd.log; sudo nodejs /OpenPLC_v2/server.js
