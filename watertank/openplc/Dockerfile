@@ -48,7 +48,13 @@ RUN apt-get install -y build-essential \
     lftp \
     iputils-ping \
     sudo \
-    automake
+    automake \
+    python-pip \
+    python2.7  \
+    sqlite3
+
+
+RUN pip install flask flask-login pyserial pymodbus
 
 WORKDIR /home/
 RUN git clone https://github.com/DataSoft/Honeyd.git
