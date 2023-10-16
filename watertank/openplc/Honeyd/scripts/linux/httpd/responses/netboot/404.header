@@ -1,6 +1,0 @@
-HTTP/1.1 404 Not Found
-Date: %DATE%
-Server: %SERVER_VERSION%
-Connection: close
-Content-Type: text/html
-

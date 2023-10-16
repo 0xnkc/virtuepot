@@ -1,6 +1,0 @@
-usr/bin
-usr/share/honeyd
-usr/lib/honeyd
-etc/honeypot
-etc/default
-var/log/honeypot
