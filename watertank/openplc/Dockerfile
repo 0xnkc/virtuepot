@@ -14,6 +14,7 @@ COPY Honeyd/ /home/Honeyd/
 WORKDIR Honeyd
 
 RUN mv configure.in configure.ac
+RUN sudo chmod +x autogen.sh
 RUN ./autogen.sh
 RUN ./configure
 
