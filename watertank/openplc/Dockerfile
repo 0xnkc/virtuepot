@@ -64,6 +64,4 @@ RUN printf "n\n1\n" | ./build.sh
 EXPOSE 502
 EXPOSE 8080
 
-RUN  sudo chmod +x /home/OpenPLC_v3/start_openplc.sh
-
 CMD  nohup honeyd -d -f /app/honeyd.conf &> honeyd.log; sudo nodejs server.js
