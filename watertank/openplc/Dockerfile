@@ -57,9 +57,10 @@ WORKDIR /home/OpenPLC_v2/
 RUN sudo chmod +x ./build.sh
 RUN printf "n\n1\n" | ./build.sh
 
-WORKDIR /home/
 
 EXPOSE 502
 EXPOSE 8080
 
-CMD  nohup honeyd -d -f /home/honeyd.conf &> honeyd.log; sudo nodejs /OpenPLC_v2/server.js
+
+# CMD  nohup honeyd -d -f /home/honeyd.conf &> honeyd.log; sudo nodejs /OpenPLC_v2/server.js
+CMD sudo nodejs server.js

@@ -8,6 +8,7 @@ services:
     stdin_open: true # docker run -i
     tty: true 
     privileged: true
+    entrypoint: ["honeyd", "-d", "-f", "honeyd.conf", "-l", "honeyd.log"]
     container_name: openplc
     volumes:
       - "/etc/timezone:/etc/timezone:ro"
