@@ -88,6 +88,6 @@ RUN sudo ./install.sh linux
 EXPOSE 502
 EXPOSE 8080
 
-RUN  sudo chmod +x /home/OpenPLC_v3/run.sh
+RUN  sudo chmod +x /home/OpenPLC_v3/start_openplc.sh
 
-CMD  nohup honeyd -d -f /app/honeyd.conf &> honeyd.log; ./run.sh
+CMD  nohup honeyd -d -f /app/honeyd.conf &> honeyd.log; ./start_openplc.sh
