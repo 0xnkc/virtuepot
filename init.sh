@@ -76,7 +76,7 @@ docker-compose -f zeek/docker-compose.yml up -d
 
 
 #Run the honeyd
-docker-compose -f honeyd/docker-compose.yml up -d
+# docker-compose -f honeyd/docker-compose.yml up -d
 
 
 #Check the running containers 
