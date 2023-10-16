@@ -53,7 +53,7 @@ WORKDIR /home/
 # RUN sudo chmod +x install.sh
 # RUN sudo ./install.sh linux
 
-RUN sudo apt-get install build-essential pkg-config bison flex autoconf automake libtool make nodejs git
+RUN sudo apt-get install -y build-essential pkg-config bison flex autoconf automake libtool make nodejs git
 RUN git clone https://github.com/thiagoralves/OpenPLC_v2
 WORKDIR /home/OpenPLC_v2/
 RUN sudo chmod +x ./build.sh
