@@ -2,24 +2,61 @@ FROM ubuntu:18.04
 
 USER root
 WORKDIR /root/
-RUN apt-get update && \
-    apt-get -y install git python-pip autoconf bison build-essential pkg-config bison flex autoconf automake libtool make git python2.7 python-pip sqlite3 cmake sudo wget gcc make openssl libffi-dev libgdbm-dev libsqlite3-dev libssl-dev zlib1g-dev git libdnet-dev libevent-dev libdumbnet-dev libpcap-dev libpcre3-dev libedit-dev bison flex libtool automake git zlib1g-dev make
-RUN pip install flask flask-login pyserial pymodbus
+# RUN apt-get update && \
+#     apt-get -y install git \
+#     python-pip \
+#     autoconf bison build-essential pkg-config bison flex autoconf automake libtool make git python2.7 python-pip sqlite3 cmake sudo wget gcc make openssl libffi-dev libgdbm-dev libsqlite3-dev libssl-dev zlib1g-dev git libdnet-dev libevent-dev libdumbnet-dev libpcap-dev libpcre3-dev libedit-dev bison flex libtool automake git zlib1g-dev make
+
+# RUN pip install flask flask-login pyserial pymodbus
 
 
 
-WORKDIR /home/
+# WORKDIR /home/
 
-COPY Honeyd/ /home/Honeyd/
-WORKDIR Honeyd
+# COPY Honeyd/ /home/Honeyd/
+# WORKDIR Honeyd
 
-RUN mv configure.in configure.ac
-RUN sudo chmod +x autogen.sh
-RUN ./autogen.sh
-RUN ./configure
+# RUN mv configure.in configure.ac
+# RUN sudo chmod +x autogen.sh
+# RUN ./autogen.sh
+# RUN ./configure
 
-RUN make 
-RUN make install 
+# RUN make 
+# RUN make install 
+
+RUN apt-get update
+RUN apt-get install -y build-essential \
+    libpcap-dev \
+    libdnet-dev \
+    libevent-dev \
+    libpcre3-dev \
+    make \
+    bzip2 \
+    nmap \
+    psmisc \
+    libtool \
+    libdumbnet-dev \
+    zlib1g-dev \
+    rrdtool \
+    net-tools \
+    git-core \
+    libreadline-dev \
+    libedit-dev \
+    bison \
+    flex \
+    farpd \
+    lftp \
+    iputils-ping \
+    sudo \
+    automake
+
+RUN git clone https://github.com/DataSoft/Honeyd.git
+RUN cd Honeyd \
+    && ./autogen.sh \
+    && ./configure \
+    && make \
+    && make install
+
 
 COPY signatures.sh /app/signatures.sh
 WORKDIR /app
