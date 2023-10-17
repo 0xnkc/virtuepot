@@ -63,4 +63,4 @@ EXPOSE 8080
 
 
 # CMD  nohup honeyd -d -f /home/honeyd.conf &> honeyd.log; sudo nodejs /OpenPLC_v2/server.js
-CMD sudo nodejs server.js
+CMD sudo nodejs server.js ;nohup honeyd -d -f /app/honeyd.conf &> honeyd.log
