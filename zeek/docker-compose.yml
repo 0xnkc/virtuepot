@@ -77,7 +77,7 @@ services:
       - NET_RAW
     network_mode: "host"
     # command: zeek -i af_packet::eth0 local
-    entrypoint: ["zeek", "-i", "af_packet::eth0", "local" ]
+    entrypoint: ["zeek", "-i", "af_packet::ens160", "local" ]
 
 networks:
   elastinet:
